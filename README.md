@@ -43,11 +43,28 @@ console.log(result);
 
 Configuration can be provided via environment variables, a config file, or programmatically.
 
-| Variable | Description | Default |
-|----------|-------------|--------|
-| `CI_PIPELINE_KIT_TIMEOUT` | Request timeout in seconds | `30` |
-| `CI_PIPELINE_KIT_RETRIES` | Number of retry attempts | `3` |
-| `CI_PIPELINE_KIT_LOG_LEVEL` | Log verbosity (debug, info, warn, error) | `info` |
+### Environment Variables
+
+| Variable | Description | Default | Example |
+|----------|-------------|---------|---------|
+| `CI_PIPELINE_KIT_TIMEOUT` | Request timeout in seconds | `30` | `60` |
+| `CI_PIPELINE_KIT_RETRIES` | Number of retry attempts | `3` | `5` |
+| `CI_PIPELINE_KIT_LOG_LEVEL` | Log verbosity (debug, info, warn, error) | `info` | `debug` |
+| `NODE_ENV` | Node environment (development, production) | `production` | `development` |
+| `CI_PIPELINE_KIT_DEBUG` | Enable debug mode | `false` | `true` |
+| `CI_PIPELINE_KIT_API_URL` | Custom API endpoint | none | `https://api.example.com` |
+
+### Programmatic Configuration
+
+```typescript
+import { createCiPipelineKit } from 'ci-pipeline-kit';
+
+const instance = createCiPipelineKit({
+  timeout: 30_000,
+  retries: 3,
+  logLevel: 'debug',
+});
+```
 
 ## Contributing
 
